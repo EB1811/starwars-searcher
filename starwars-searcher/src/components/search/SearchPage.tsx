@@ -1,43 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useStore } from "../../stores/useStore";
 
 const SearchPage = () => {
-    const [infoNamesArr, setInfoNamesArr] = useState<string[]>([]);
-    const [infoDict, setInfoDict] = useState<any>({});
     const [suggestions, setSuggestions] = useState<string[]>([]);
     const [text, setText] = useState("");
 
+    const infoDict = useStore((state) => state.infoDict);
+    const infoNamesArr = useStore((state) => state.infoNamesArr);
+    const populateWithAPI = useStore((state) => state.api.populateWithAPI);
+
     useEffect(() => {
-        let tempInfoNamesArr: string[] = [];
-        let tempInfoDict: any = {};
-
-        const populateWithAPI = async () => {
-            const peopleData = await (
-                await fetch("https://swapi.dev/api/people")
-            ).json();
-            const planetsData = await (
-                await fetch("https://swapi.dev/api/planets")
-            ).json();
-            const speciesData = await (
-                await fetch("https://swapi.dev/api/species")
-            ).json();
-
-            peopleData.results.forEach((data: any) => {
-                tempInfoNamesArr.push(data.name);
-                tempInfoDict[data.name] = data;
-            });
-            planetsData.results.forEach((data: any) => {
-                tempInfoNamesArr.push(data.name);
-                tempInfoDict[data.name] = data;
-            });
-            speciesData.results.forEach((data: any) => {
-                tempInfoNamesArr.push(data.name);
-                tempInfoDict[data.name] = data;
-            });
-
-            setInfoNamesArr(tempInfoNamesArr);
-            setInfoDict(tempInfoDict);
-        };
-
         populateWithAPI();
     }, []);
 
