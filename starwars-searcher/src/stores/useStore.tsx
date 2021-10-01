@@ -4,13 +4,13 @@ import produce, { Draft } from "immer";
 
 export type StoreAPI = {
     populateWithAPI: () => Promise<void>;
-    setPlanetsData: (data: object) => void;
+    setPlanetsData: (data: string[]) => void;
 };
 
 export type StoreType = {
     readonly infoNamesArr: string[];
     readonly infoDict: any;
-    readonly planetsData: object;
+    readonly planetNames: string[];
     readonly api: StoreAPI;
 };
 
@@ -34,7 +34,7 @@ export const useStore = create<StoreType>(
         immer((set, get) => ({
             infoNamesArr: [],
             infoDict: {},
-            planetsData: {},
+            planetNames: [],
             api: {
                 populateWithAPI: async () => {
                     let tempInfoNamesArr: string[] = [];
@@ -70,7 +70,7 @@ export const useStore = create<StoreType>(
                     set({ infoDict: tempInfoDict });
                 },
                 setPlanetsData: (data) => {
-                    set({ planetsData: data });
+                    set({ planetNames: data });
                 },
             },
         }))

@@ -12,9 +12,9 @@ describe("useStore", () => {
         const { result } = renderHook(() => useStore((state) => state));
 
         act(() => {
-            result.current.api.setPlanetsData({ name: "Earth" });
+            result.current.api.setPlanetsData(["earth"]);
         });
 
-        expect(result.current.planetsData).toEqual({ name: "Earth" });
+        expect(result.current.planetNames).toEqual(["earth"]);
     });
 });
