@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import LoginPage from "./components/login/loginPage";
+import PlanetsMap from "./components/planetsMap/PlanetsMap";
 import SearchPage from "./components/search/SearchPage";
 
 function App() {
@@ -21,6 +22,13 @@ function App() {
                     <div className='App'>
                         <header className='App-header'>
                             <SearchPage />
+                        </header>
+                    </div>
+                </Route>
+                <Route exact path='/planetNames'>
+                    <div className='App'>
+                        <header className='App-header'>
+                            <PlanetsMap />
                         </header>
                     </div>
                 </Route>
