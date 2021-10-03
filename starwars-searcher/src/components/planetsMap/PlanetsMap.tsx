@@ -3,17 +3,10 @@ import { useStore } from "../../stores/useStore";
 
 const PlanetsMap = () => {
     const planetNames = useStore((state) => state.planetNames);
-    const setPlanetsData = useStore((state) => state.api.setPlanetsData);
+    const getPlanetsData = useStore((state) => state.api.getPlanetsData);
 
     useEffect(() => {
-        const populatePlanetsFromAPI = async () => {
-            const planetsData = await (
-                await fetch("https://swapi.dev/api/planets")
-            ).json();
-            setPlanetsData(planetsData.results.map((pd: any) => pd.name));
-        };
-
-        populatePlanetsFromAPI();
+        getPlanetsData();
     }, []);
 
     return (

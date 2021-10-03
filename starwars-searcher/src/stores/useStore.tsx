@@ -4,6 +4,7 @@ import produce, { Draft } from "immer";
 
 export type StoreAPI = {
     populateWithAPI: () => Promise<void>;
+    getPlanetsData: () => Promise<void>;
     setPlanetsData: (data: string[]) => void;
 };
 
@@ -68,6 +69,17 @@ export const useStore = create<StoreType>(
 
                     set({ infoNamesArr: tempInfoNamesArr });
                     set({ infoDict: tempInfoDict });
+                },
+                getPlanetsData: async () => {
+                    const planetsData = await (
+                        await fetch("https://swapi.dev/api/planets")
+                    ).json();
+
+                    set({
+                        planetNames: planetsData.results.map(
+                            (pd: any) => pd.name
+                        ),
+                    });
                 },
                 setPlanetsData: (data) => {
                     set({ planetNames: data });
