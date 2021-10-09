@@ -8,11 +8,11 @@ describe("useStore", () => {
         cleanup();
     });
 
-    it("The setPlanetsData function correctly sets the planetsData variable.", () => {
+    it("The setPlanetNames function correctly sets the planetNames variable.", () => {
         const { result } = renderHook(() => useStore((state) => state));
 
         act(() => {
-            result.current.api.setPlanetsData(["earth"]);
+            result.current.api.setPlanetNames(["earth"]);
         });
 
         expect(result.current.planetNames).toEqual(["earth"]);

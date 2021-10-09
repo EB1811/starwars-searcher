@@ -15,8 +15,8 @@ describe("ListOfOrganisationUsers", () => {
                 infoDict: {},
                 infoNamesArr: [],
                 api: {
-                    setPlanetsData: (data) => {},
-                    getPlanetsData: async () => {},
+                    setPlanetNames: (data) => {},
+                    getPlanetNames: async () => {},
                     populateWithAPI: async () => {},
                 },
             })
