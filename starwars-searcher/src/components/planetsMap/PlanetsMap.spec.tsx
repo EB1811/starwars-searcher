@@ -14,11 +14,9 @@ describe("ListOfOrganisationUsers", () => {
                 planetNames: ["Tatooine", "Mandalore"],
                 infoDict: {},
                 infoNamesArr: [],
-                api: {
-                    setPlanetNames: (data) => {},
-                    getPlanetNames: async () => {},
-                    populateWithAPI: async () => {},
-                },
+                setPlanetNames: (data) => {},
+                getPlanetNames: async () => {},
+                populateWithAPI: async () => {},
             })
         );
 
