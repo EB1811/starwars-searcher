@@ -3,10 +3,10 @@ import { useStore } from "../../stores/useStore";
 
 const PlanetsMap = () => {
     const planetNames = useStore((state) => state.planetNames);
-    const getPlanetsData = useStore((state) => state.api.getPlanetNames);
+    const getPlanetNames = useStore((state) => state.getPlanetNames);
 
     useEffect(() => {
-        getPlanetsData();
+        getPlanetNames?.();
     }, []);
 
     return (
