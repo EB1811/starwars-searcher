@@ -7,7 +7,7 @@ const SearchPage = () => {
 
     const infoDict = useStore((state) => state.infoDict);
     const infoNamesArr = useStore((state) => state.infoNamesArr);
-    const populateWithAPI = useStore((state) => state.api.populateWithAPI);
+    const populateWithAPI = useStore((state) => state.populateWithAPI);
 
     useEffect(() => {
         populateWithAPI();
